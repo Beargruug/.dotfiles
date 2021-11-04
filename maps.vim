@@ -40,9 +40,6 @@ vnoremap <silent> # :<C-U>
 nmap <S-Tab> :tabprev<Return>
 nmap <Tab> :tabnext<Return>
 
-"------------------------------
-" Windows
-
 " Split window
 nmap <leader>ss :split<Return><C-w>w
 nmap <leader>sv :vsplit<Return><C-w>w
