@@ -72,7 +72,7 @@ let g:typescript_indent_disable = 1
 " nnoremap <Right> <Nop>
 " nnoremap <Up> <Nop>
 " nnoremap <Down> <Nop>
-let mapleader = ","
+let mapleader = "," 
 let g:mapleader = ","
 nmap <leader>w :w!<cr>
 
@@ -86,7 +86,6 @@ map <C-l> <C-W>l
 
 nmap <C-n> :NERDTreeToggle<CR>
 
-nmap <leader>cf <CMD>GetCurrentFunctions<CR>
 " split panel
 nnoremap <silent> :vs :vsplit<CR>
 nnoremap <silent> :hs :split<CR>
@@ -104,12 +103,17 @@ nnoremap <leader>9 :9tabnext<CR>
 nnoremap <leader>nt :tabnew<CR>
 nnoremap <leader>tc :tabclose<CR>
 
+nnoremap <leader>t :t.<CR>
+
 " ctrlp
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:blamer_enabled = 1
+
+nmap <leader>cf <CMD>GetCurrentFunctions<CR>
+
 
 
 " Highlights "{{{
@@ -177,14 +181,11 @@ runtime ./maps.vim
 if exists("&termguicolors") && exists("&winblend")
   syntax enable
   set termguicolors
+  colorscheme gruvbox
   set winblend=0
   set wildoptions=pum
   set pumblend=5
   set background=dark
-  " Use NeoSolarized
-  "let g:neosolarized_termtrans=1
-  "runtime ./colors/NeoSolarized.vim
-  colorscheme gruvbox
 endif
 
 "}}}

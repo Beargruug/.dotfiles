@@ -12,10 +12,10 @@ nnoremap - <C-x>
 " Delete a word backwards
 nnoremap dw vb"_d
 
+nnoremap <silent><leader>l :put =printf('console.log(''%s:'', %s);', expand('<cword>'), expand('<cword>'))<CR>
+
 " Select all
 nmap <C-a> gg<S-v>G
-
-nnoremap <silent><leader>l :put =printf('console.log(''%s:'', %s);', expand('<cword>'), expand('<cword>'))<CR>
 
 " Save with root permission
 command! W w !sudo tee > /dev/null %
@@ -39,6 +39,9 @@ vnoremap <silent> # :<C-U>
 "nmap te :tabedit 
 nmap <S-Tab> :tabprev<Return>
 nmap <Tab> :tabnext<Return>
+
+"------------------------------
+" Windows
 
 " Split window
 nmap <leader>ss :split<Return><C-w>w
