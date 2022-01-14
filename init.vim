@@ -84,7 +84,8 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-nmap <C-n> :NERDTreeToggle<CR>
+" nmap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> <CMD>NvimTreeToggle<CR>
 
 " split panel
 nnoremap <silent> :vs :vsplit<CR>
@@ -119,23 +120,12 @@ nmap <leader>cf <CMD>GetCurrentFunctions<CR>
 " Highlights "{{{
 " ---------------------------------------------------------------------
 set cursorline
-"set cursorcolumn
 
 " Set cursor line color on visual mode
 highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
 
 highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
 
-"augroup BgHighlight
-"  autocmd!
-"  autocmd WinEnter * set cul
-"  autocmd WinLeave * set nocul
-"augroup END
-
-"if &term =~ "screen"
-"  autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
-"  autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
-"endif
 let g:airline_powerline_fonts = 1
 
 
