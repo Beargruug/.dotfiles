@@ -81,9 +81,9 @@ local on_attach = function(client, bufnr)
   }
 end
 
-nvim_lsp.flow.setup {
-  on_attach = on_attach
-}
+-- nvim_lsp.flow.setup {
+--   on_attach = on_attach
+-- }
 
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
