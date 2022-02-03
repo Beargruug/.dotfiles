@@ -97,8 +97,7 @@ let g:blamer_enabled = 1
 nmap <leader>cf <CMD>GetCurrentFunctions<CR>
 
 nnoremap <silent> <leader>ff :FiletypeFormat<cr>
-vnoremap <silent> <leader>ff :FiletypeFormat<cr>
-
+vnoremap <silent> <leader>ff :filetypeformat<cr>
 
 
 " Highlights "{{{
