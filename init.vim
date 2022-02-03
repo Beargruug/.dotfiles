@@ -46,7 +46,7 @@ set ignorecase
 " Be smart when using tabs ;)
 set smarttab
 " indents
-filetype plugin indent on
+"filetype plugin indent on
 set shiftwidth=2
 set tabstop=2
 set ai "Auto indent
@@ -84,30 +84,11 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" nmap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-n> <CMD>NvimTreeToggle<CR>
 
 " split panel
 nnoremap <silent> :vs :vsplit<CR>
 nnoremap <silent> :hs :split<CR>
-
-nnoremap <leader>1 :1tabnext<CR>
-nnoremap <leader>2 :2tabnext<CR>
-nnoremap <leader>3 :3tabnext<CR>
-nnoremap <leader>4 :4tabnext<CR>
-nnoremap <leader>5 :5tabnext<CR>
-nnoremap <leader>6 :6tabnext<CR>
-nnoremap <leader>7 :7tabnext<CR>
-nnoremap <leader>8 :8tabnext<CR>
-nnoremap <leader>9 :9tabnext<CR>
-
-nnoremap <leader>nt :tabnew<CR>
-nnoremap <leader>tc :tabclose<CR>
-
-nnoremap <leader>t :t.<CR>
-
-" ctrlp
-"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
