@@ -76,6 +76,8 @@ let mapleader = ","
 let g:mapleader = ","
 nmap <leader>w :w!<cr>
 
+xnoremap p "_dP
+
 map <space> /
 map <c-space> ?
 
