@@ -67,11 +67,6 @@ let g:typescript_indent_disable = 1
 
 "}}}
 
-" disable arrow navigation (training for hjkl)
-" nnoremap <Left> <Nop>
-" nnoremap <Right> <Nop>
-" nnoremap <Up> <Nop>
-" nnoremap <Down> <Nop>
 let mapleader = "," 
 let g:mapleader = ","
 nmap <leader>w :w!<cr>
