@@ -7,7 +7,6 @@ call plug#begin()
 Plug 'Yggdroot/indentLine'
 
 if has("nvim")
-  " Plug 'kyazdani42/nvim-tree.lua'
   Plug 'kristijanhusak/defx-git'
   Plug 'kristijanhusak/defx-icons'
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -46,14 +45,11 @@ if has("nvim")
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
-  " Plug 'lewis6991/gitsigns.nvim'
   Plug 'airblade/vim-gitgutter'
   Plug 'APZelos/blamer.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'windwp/nvim-autopairs'
-  Plug 'kien/ctrlp.vim'
   " Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-  " Plug 'gruvbox-community/gruvbox'
 
 endif
 

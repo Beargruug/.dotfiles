@@ -81,7 +81,6 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-"nnoremap <C-n> <CMD>NvimTreeToggle<CR>
 
 " split panel
 nnoremap <silent> :vs :vsplit<CR>
@@ -97,6 +96,22 @@ nnoremap <silent> <leader>ff :FiletypeFormat<cr>
 vnoremap <silent> <leader>ff :filetypeformat<cr>
 
 
+autocmd BufEnter,VimEnter,BufNew,BufWinEnter,BufRead,BufCreate
+    \ * if isdirectory(expand('<amatch>'))
+    \   | call s:browse_check(expand('<amatch>')) | endif
+
+function! s:browse_check(path) abort
+  if bufnr('%') != expand('<abuf>')
+    return
+  endif
+
+" Disable netrw.
+augroup FileExplorer
+  autocmd!
+augroup END
+
+  execute 'Defx' a:path
+ endfunction
 " Highlights "{{{
 " ---------------------------------------------------------------------
 set cursorline
@@ -106,6 +121,17 @@ highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
 
 highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
 
+augroup BgHighlight
+  autocmd!
+  autocmd WinEnter * set cul
+  autocmd WinLeave * set nocul
+augroup END
+
+if &term =~ "screen"
+  autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
+  autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
+endif
+
 let g:airline_powerline_fonts = 1
 
 
@@ -114,19 +140,21 @@ let g:airline_powerline_fonts = 1
 " File types "{{{
 " ---------------------------------------------------------------------
 " JavaScript
-"au BufNewFile,BufRead *.es6 setf javascript
+au BufNewFile,BufRead *.es6 setf javascript
 " TypeScript
-"au BufNewFile,BufRead *.tsx setf typescriptreact
+au BufNewFile,BufRead *.tsx setf typescriptreact
 " Markdown
-"au BufNewFile,BufRead *.md set filetype=markdown
+au BufNewFile,BufRead *.md set filetype=markdown
+au BufNewFile,BufRead *.mdx set filetype=markdown
 " Flow
-"au BufNewFile,BufRead *.flow set filetype=javascript
+au BufNewFile,BufRead *.flow set filetype=javascript
+" Fish
+au BufNewFile,BufRead *.fish set filetype=fish
+set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
 
-"set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
-
-"autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
-"autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
-"autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
 "}}}
 
