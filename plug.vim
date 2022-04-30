@@ -7,8 +7,7 @@ call plug#begin()
 Plug 'Yggdroot/indentLine'
 
 if has("nvim")
-   " General Tools {{{2
-  Plug 'kyazdani42/nvim-tree.lua'
+  " Plug 'kyazdani42/nvim-tree.lua'
   Plug 'kristijanhusak/defx-git'
   Plug 'kristijanhusak/defx-icons'
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -26,10 +25,10 @@ if has("nvim")
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
   Plug 'eckon/treesitter-current-functions'
-  "LSP - base
+  " LSP - base
   Plug 'neovim/nvim-lspconfig'
   Plug 'williamboman/nvim-lsp-installer'
-  "LSP - completion
+  " LSP - completion
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
@@ -41,20 +40,20 @@ if has("nvim")
   " LSP - extensions
   Plug 'jose-elias-alvarez/null-ls.nvim'
 
- " Plug 'glepnir/lspsaga.nvim'
+  " Plug 'glepnir/lspsaga.nvim'
   Plug 'folke/lsp-colors.nvim'
- " Plug 'nvim-lua/completion-nvim'
+  " Plug 'nvim-lua/completion-nvim'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
-  "Plug 'lewis6991/gitsigns.nvim'
+  " Plug 'lewis6991/gitsigns.nvim'
   Plug 'airblade/vim-gitgutter'
   Plug 'APZelos/blamer.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'windwp/nvim-autopairs'
   Plug 'kien/ctrlp.vim'
-  "Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'gruvbox-community/gruvbox'
+  " Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Plug 'gruvbox-community/gruvbox'
 
 endif
 
