@@ -9,6 +9,10 @@ Plug 'Yggdroot/indentLine'
 if has("nvim")
    " General Tools {{{2
   Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'kristijanhusak/defx-git'
+  Plug 'kristijanhusak/defx-icons'
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary'

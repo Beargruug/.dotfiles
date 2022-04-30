@@ -81,7 +81,7 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-nnoremap <C-n> <CMD>NvimTreeToggle<CR>
+"nnoremap <C-n> <CMD>NvimTreeToggle<CR>
 
 " split panel
 nnoremap <silent> :vs :vsplit<CR>
