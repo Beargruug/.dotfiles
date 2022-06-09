@@ -18,7 +18,8 @@ if has("nvim")
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'tpope/vim-surround'
-  Plug 'pappasam/vim-filetype-formatter'
+  
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 
   " Treesitter {{{2
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
