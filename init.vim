@@ -92,9 +92,12 @@ let g:blamer_enabled = 1
 
 nmap <leader>cf <CMD>GetCurrentFunctions<CR>
 
-nnoremap <silent> <leader>ff :FiletypeFormat<cr>
-vnoremap <silent> <leader>ff :filetypeformat<cr>
+nnoremap <silent> <leader>ff :Prettier<cr>
+vnoremap <silent> <leader>ff :Prettier<cr>
 
+" autoformat
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
 
 autocmd BufEnter,VimEnter,BufNew,BufWinEnter,BufRead,BufCreate
     \ * if isdirectory(expand('<amatch>'))
@@ -111,7 +114,8 @@ augroup FileExplorer
 augroup END
 
   execute 'Defx' a:path
- endfunction
+endfunction
+
 " Highlights "{{{
 " ---------------------------------------------------------------------
 set cursorline
