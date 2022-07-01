@@ -16,10 +16,10 @@ local null_ls = require('null-ls')
 vim.diagnostic.config({ virtual_text = { source = true } })
 
 local servers = {
-  'bashls', 'vimls',
-  'html', 'cssls', 'emmet_ls', 'tailwindcss',
-  'jsonls', 'yamlls',
-  'tsserver', 'vuels',
+  'bash', 'vim',
+  'css', 'emmet',
+  'json', 'yaml',
+  'vue',
 }
 
 -- install servers if not already existing
@@ -125,10 +125,10 @@ end)
   buf_set_keymap('n', '<leader>g', '<cmd>lua vim.lsp.buf.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<leader>G', '<cmd>lua vim.lsp.buf.goto_next()<CR>', opts)
   buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.buf.set_loclist()<CR>', opts)
-  buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  -- buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
   -- formatting
-  -- if client.resolved_capabilities.document_formatting then
+  -- if client.server_capabilities.documentFormattingProvider then
   --   vim.api.nvim_command [[augroup Format]]
   --   vim.api.nvim_command [[autocmd! * <buffer>]]
   --   vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
@@ -173,7 +173,8 @@ end
 
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  capabilities = capabilities
 }
 
 nvim_lsp.diagnosticls.setup {

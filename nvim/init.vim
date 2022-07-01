@@ -67,6 +67,11 @@ let g:typescript_indent_disable = 1
 
 "}}}
 
+" disable arrow navigation (training for hjkl)
+" nnoremap <Left> <Nop>
+" nnoremap <Right> <Nop>
+" nnoremap <Up> <Nop>
+" nnoremap <Down> <Nop>
 let mapleader = "," 
 let g:mapleader = ","
 nmap <leader>w :w!<cr>
@@ -81,6 +86,7 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+nnoremap <C-n> <CMD>NvimTreeToggle<CR>
 
 " split panel
 nnoremap <silent> :vs :vsplit<CR>
@@ -90,11 +96,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:blamer_enabled = 1
 
-nmap <leader>cf <CMD>GetCurrentFunctions<CR>
+nmap ;cf <CMD>GetCurrentFunctions<CR>
 
 nnoremap <silent> <leader>ff :Prettier<cr>
 vnoremap <silent> <leader>ff :Prettier<cr>
-
 " autoformat
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
@@ -125,6 +130,11 @@ highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
 
 highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
 
+let g:airline_powerline_fonts = 1
+
+
+"}}}
+
 augroup BgHighlight
   autocmd!
   autocmd WinEnter * set cul
@@ -136,11 +146,6 @@ if &term =~ "screen"
   autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
 endif
 
-let g:airline_powerline_fonts = 1
-
-
-"}}}
-
 " File types "{{{
 " ---------------------------------------------------------------------
 " JavaScript
@@ -149,11 +154,9 @@ au BufNewFile,BufRead *.es6 setf javascript
 au BufNewFile,BufRead *.tsx setf typescriptreact
 " Markdown
 au BufNewFile,BufRead *.md set filetype=markdown
-au BufNewFile,BufRead *.mdx set filetype=markdown
 " Flow
 au BufNewFile,BufRead *.flow set filetype=javascript
-" Fish
-au BufNewFile,BufRead *.fish set filetype=fish
+
 set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
 
 autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
@@ -187,10 +190,12 @@ if exists("&termguicolors") && exists("&winblend")
   set wildoptions=pum
   set pumblend=5
   set background=dark
-  " Use NeoSolarized
+  let g:gruvbox_contrast_dark = 'hard' 
+  colorscheme gruvbox
+  " Use NeoSolarized Theme
   " let g:neosolarized_termtrans=1
   " runtime ./colors/NeoSolarized.vim
-  colorscheme gruvbox
+  " colorscheme NeoSolarized
 endif
 
 "}}}
@@ -200,4 +205,5 @@ endif
 set exrc
 "}}}
 
+let g:python3_host_prog = '/usr/bin/python3'
 " vim: set foldmethod=marker foldlevel=0:
