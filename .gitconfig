@@ -1,0 +1,23 @@
+[alias]
+  cmm = commit -m
+  s = status
+[user]
+  name = Fabian Scheid
+  email = f.scheid@evana.de
+[pull]
+  ff = only
+[core]
+	ignorecase = true
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
+  ui = auto
+[difftool]
+    prompt = true
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
