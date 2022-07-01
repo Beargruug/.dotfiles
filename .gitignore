@@ -32,5 +32,13 @@ Session.vim
 .vim/syntax/Dockerfile.vim
 .vim/snippets/
 
+# Iterm
+.config/iterm2
+
 # Karabiner
 .config/karabiner/automatic_backups
+
+# Others
+.config/znt
+.config/htop
+.config/configstore
