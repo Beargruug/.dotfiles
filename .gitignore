@@ -1,1 +1,36 @@
 .DS_Store
+*.o
+\#*#
+*#
+.#*
+.*~
+*~
+*.sw[po]
+tags
+TAGS
+.svn
+*.dSYM
+*.log
+*.dvi
+*.aux
+*.elc
+.zshrc
+.python-version
+samples
+.netrwhist
+.bundle
+/vendor/bundle
+Gemfile.lock
+node_modules
+bower_components
+
+# Vim
+Session.vim
+.vim/bundle/
+.vimrc_sample
+.vim/ftdetect/Dockerfile.vim
+.vim/syntax/Dockerfile.vim
+.vim/snippets/
+
+# Karabiner
+.config/karabiner/automatic_backups
