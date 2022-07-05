@@ -56,6 +56,7 @@ if has("nvim")
   Plug 'APZelos/blamer.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'windwp/nvim-autopairs'
+  Plug 'windwp/nvim-ts-autotag'
   Plug 'kien/ctrlp.vim'
   " Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
