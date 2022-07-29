@@ -10,10 +10,11 @@ if has("nvim")
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'kristijanhusak/defx-git'
   Plug 'kristijanhusak/defx-icons'
-
+  " Plug 'nvim-telescope/telescope-file-browser.nvim'
+  " Session
+  Plug 'mhinz/vim-startify'
   Plug 'easymotion/vim-easymotion'
-
-  Plug 'kyazdani42/nvim-tree.lua'
+  " Plug 'kyazdani42/nvim-tree.lua'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary'
@@ -25,7 +26,7 @@ if has("nvim")
   Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
   " Treesitter {{{2
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-  Plug 'p00f/nvim-ts-rainbow'
+  Plug 'p00f/nvim-ts-rainbow', { 'branch': 'update_parser' }
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
   Plug 'eckon/treesitter-current-functions'
   " LSP - base
@@ -57,16 +58,13 @@ if has("nvim")
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'windwp/nvim-autopairs'
   Plug 'windwp/nvim-ts-autotag'
-  Plug 'kien/ctrlp.vim'
   " Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
   " Themes
   Plug 'gruvbox-community/gruvbox'
-  Plug 'sainnhe/gruvbox-material'
 
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
 call plug#end()

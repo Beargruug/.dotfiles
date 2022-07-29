@@ -86,11 +86,11 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-nnoremap <C-n> <CMD>NvimTreeToggle<CR>
+"nnoremap <C-n> <CMD>NvimTreeToggle<CR>
 
 " split panel
-nnoremap <silent> :vs :vsplit<CR>
-nnoremap <silent> :hs :split<CR>
+nnoremap <silent> :ss :vsplit<CR>
+nnoremap <silent> :sv :split<CR>
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -100,6 +100,9 @@ nmap ;cf <CMD>GetCurrentFunctions<CR>
 
 nnoremap <silent> <leader>ff :Prettier<cr>
 vnoremap <silent> <leader>ff :Prettier<cr>
+
+nnoremap <silent> ;e <CMD>:Telescope diagnostics<CR>
+
 " autoformat
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
@@ -108,19 +111,18 @@ autocmd BufEnter,VimEnter,BufNew,BufWinEnter,BufRead,BufCreate
     \ * if isdirectory(expand('<amatch>'))
     \   | call s:browse_check(expand('<amatch>')) | endif
 
-function! s:browse_check(path) abort
-  if bufnr('%') != expand('<abuf>')
-    return
-  endif
+  function! s:browse_check(path) abort
+    if bufnr('%') != expand('<abuf>')
+      return
+    endif
 
-" Disable netrw.
-augroup FileExplorer
-  autocmd!
-augroup END
+    " Disable netrw.
+    augroup FileExplorer
+      autocmd!
+    augroup END
 
-  execute 'Defx' a:path
-endfunction
-
+    execute 'Defx' a:path
+  endfunction
 " Highlights "{{{
 " ---------------------------------------------------------------------
 set cursorline
