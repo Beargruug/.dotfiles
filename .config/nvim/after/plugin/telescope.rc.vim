@@ -8,6 +8,7 @@ nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
 
 lua << EOF
 local actions = require('telescope.actions')
+
 -- Global remapping
 ------------------------------
 require('telescope').setup{
@@ -18,7 +19,7 @@ require('telescope').setup{
         ["q"] = actions.close
       },
     },
-  }
+  },
 }
 EOF
 

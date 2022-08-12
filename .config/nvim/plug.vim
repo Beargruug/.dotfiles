@@ -7,14 +7,13 @@ call plug#begin()
 Plug 'Yggdroot/indentLine'
 
 if has("nvim")
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'kristijanhusak/defx-git'
-  Plug 'kristijanhusak/defx-icons'
-  " Plug 'nvim-telescope/telescope-file-browser.nvim'
+  " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Plug 'kristijanhusak/defx-git'
+  " Plug 'kristijanhusak/defx-icons'
+  Plug 'nvim-telescope/telescope-file-browser.nvim'
   " Session
   Plug 'mhinz/vim-startify'
   Plug 'easymotion/vim-easymotion'
-  " Plug 'kyazdani42/nvim-tree.lua'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary'
@@ -43,6 +42,7 @@ if has("nvim")
   Plug 'rafamadriz/friendly-snippets'
   " LSP - extensions
   Plug 'jose-elias-alvarez/null-ls.nvim'
+  Plug 'akinsho/nvim-bufferline.lua'
 
   " Package Update
   Plug 'Nguyen-Hoang-Nam/vim-version'
