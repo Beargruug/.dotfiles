@@ -92,7 +92,7 @@ map <C-l> <C-W>l
 nnoremap <silent> :ss :vsplit<CR>
 nnoremap <silent> :sv :split<CR>
 
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline_powerline_fonts = 1
 let g:blamer_enabled = 1
 
