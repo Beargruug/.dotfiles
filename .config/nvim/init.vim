@@ -9,7 +9,7 @@ scriptencoding utf-8
 if !1 | finish | endif
 
 set nocompatible
-set number
+set number relativenumber
 syntax enable
 set fileencodings=utf-8,sjis,euc-jp,latin
 set encoding=utf-8
@@ -63,18 +63,12 @@ autocmd InsertLeave * set nopaste
 " Add asterisks in block comments
 set formatoptions+=r
 let g:typescript_indent_disable = 1
-
-
 "}}}
 
-" disable arrow navigation (training for hjkl)
-" nnoremap <Left> <Nop>
-" nnoremap <Right> <Nop>
-" nnoremap <Up> <Nop>
-" nnoremap <Down> <Nop>
 let mapleader = "," 
 let g:mapleader = ","
 nmap <leader>w :w!<cr>
+nmap <leader>q :q<cr>
 
 xnoremap p "_dP
 

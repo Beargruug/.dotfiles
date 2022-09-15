@@ -12,14 +12,16 @@ bufferline.setup({
   },
   highlights = {
     separator = {
-      guifg = '#3c3836',
+      fg = '#3c3836',
     },
     separator_selected = {
-      guifg = '#b8bb26',
+      fg = '#b8bb26',
     },
     buffer_selected = {
-      guifg = '#fdf6e3',
-      gui = "bold",
+      fg = '#fdf6e3',
+      underline = false,
+      undercurl = false,
+      italic = false
     },
   },
 })

@@ -17,7 +17,7 @@ require("telescope").setup {
       grouped = true,
       previewer = false,
       initial_mode = "normal",
-      layout_config = { height = 40 },
+      layout_config = { height = 50, width = 100 },
       theme = "dropdown",
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
@@ -29,6 +29,7 @@ require("telescope").setup {
         ["n"] = {
           -- your custom normal mode mappings
           ["N"] = fb_actions.create,
+          ["m"] = fb_actions.move,
           ["h"] = fb_actions.goto_parent_dir,
           ["`"] = function()
             vim.cmd('startinsert')
