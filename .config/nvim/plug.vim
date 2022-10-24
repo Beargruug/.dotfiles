@@ -49,6 +49,7 @@ if has("nvim")
   Plug 'folke/lsp-colors.nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'sindrets/diffview.nvim'
   Plug 'airblade/vim-gitgutter'
   Plug 'APZelos/blamer.nvim'
   Plug 'nvim-telescope/telescope.nvim'
