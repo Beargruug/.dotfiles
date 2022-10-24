@@ -23,6 +23,7 @@ if has("nvim")
   Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
   " Treesitter {{{2
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+  Plug 'nvim-treesitter/nvim-treesitter-context'
   Plug 'p00f/nvim-ts-rainbow', { 'branch': 'update_parser' }
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
   Plug 'eckon/treesitter-current-functions'
