@@ -67,10 +67,13 @@ let g:typescript_indent_disable = 1
 
 let mapleader = "," 
 let g:mapleader = ","
+
 nmap <leader>w :w!<cr>
 nmap <leader>q :q<cr>
 
 xnoremap p "_dP
+
+nmap <leader>h :noh<cr>
 
 map <space> /
 map <c-space> ?

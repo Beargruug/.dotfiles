@@ -4,12 +4,15 @@ endif
 
 call plug#begin()
 
-Plug 'Yggdroot/indentLine'
+  Plug 'Yggdroot/indentLine'
 
 if has("nvim")
+  "Go
+  Plug 'fatih/vim-go'
+  "Worktree
+  Plug 'ThePrimeagen/git-worktree.nvim'
   Plug 'nvim-telescope/telescope-file-browser.nvim'
   " Session
-  Plug 'easymotion/vim-easymotion'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary'
@@ -56,6 +59,6 @@ if has("nvim")
 
 endif
 
-Plug 'groenewege/vim-less', { 'for': 'less' }
+  Plug 'groenewege/vim-less', { 'for': 'less' }
 
 call plug#end()
