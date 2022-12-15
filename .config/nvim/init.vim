@@ -83,6 +83,8 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+let g:loaded_node_provider = 0
+
 "nnoremap <C-n> <CMD>NvimTreeToggle<CR>
 
 " split panel
@@ -173,8 +175,9 @@ if exists("&termguicolors") && exists("&winblend")
   set wildoptions=pum
   set pumblend=5
   set background=dark
-  let g:gruvbox_contrast_dark = 'hard' 
+  " let g:gruvbox_contrast_dark = 'hard' 
   colorscheme gruvbox
+  " colorscheme vscode
   " Use NeoSolarized Theme
   " let g:neosolarized_termtrans=1
   " runtime ./colors/NeoSolarized.vim

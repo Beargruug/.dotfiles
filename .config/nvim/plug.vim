@@ -7,7 +7,13 @@ call plug#begin()
   Plug 'Yggdroot/indentLine'
 
 if has("nvim")
-  "Go
+  " Debugger
+  Plug 'mfussenegger/nvim-dap'
+  Plug 'rcarriga/nvim-dap-ui'
+  Plug 'leoluz/nvim-dap-go'
+  Plug 'theHamsta/nvim-dap-virtual-text'
+  Plug 'nvim-telescope/telescope-dap.nvim'
+  " Go
   Plug 'fatih/vim-go'
   "Worktree
   Plug 'ThePrimeagen/git-worktree.nvim'
@@ -24,7 +30,8 @@ if has("nvim")
   " Treesitter {{{2
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'nvim-treesitter/nvim-treesitter-context'
-  Plug 'p00f/nvim-ts-rainbow', { 'branch': 'update_parser' }
+  " Plug 'p00f/nvim-ts-rainbow', { 'branch': 'update_parser' }
+  Plug 'p00f/nvim-ts-rainbow'
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
   Plug 'eckon/treesitter-current-functions'
   " LSP - base
@@ -56,8 +63,11 @@ if has("nvim")
   Plug 'windwp/nvim-autopairs'
   Plug 'windwp/nvim-ts-autotag'
 
+  " Icons
+  Plug 'mortepau/codicons.nvim'
   " Themes
   Plug 'gruvbox-community/gruvbox'
+  Plug 'Mofiqul/vscode.nvim'
 
 endif
 

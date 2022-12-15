@@ -19,7 +19,7 @@ local servers = {
   'bash', 'vim',
   'css', 'emmet',
   'json', 'yaml',
-  'vue',
+  'vue', 'gopls'
 }
 
 -- install servers if not already existing
@@ -80,7 +80,7 @@ cmp.setup({
 
 -- setup lspconfig and the installer
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- setup the servers on first init and with different configs for it
 -- this also handles the basic nvim_lsp setup (which can be ignored here)
