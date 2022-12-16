@@ -62,6 +62,8 @@ if has("nvim")
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-file-browser.nvim'
   Plug 'nvim-telescope/telescope-dap.nvim'
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
 
   " Statusline
   Plug 'vim-airline/vim-airline'
@@ -79,10 +81,6 @@ if has("nvim")
   " Themes
   Plug 'gruvbox-community/gruvbox'
   Plug 'Mofiqul/vscode.nvim'
-
-  " Not sure if needed
-  " Plug 'nvim-lua/popup.nvim'
-  " Plug 'nvim-lua/plenary.nvim'
   
 endif
 

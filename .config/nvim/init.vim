@@ -20,7 +20,7 @@ set nobackup
 set hlsearch
 set showcmd
 set cmdheight=1
-set laststatus=2
+set laststatus=3
 set scrolloff=8
 set expandtab
 set mouse=a
