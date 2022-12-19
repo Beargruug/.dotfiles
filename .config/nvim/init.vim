@@ -70,6 +70,7 @@ let g:mapleader = ","
 
 nmap <leader>w :w!<cr>
 nmap <leader>q :q<cr>
+nmap <leader>s :source %<cr>
 
 xnoremap p "_dP
 
