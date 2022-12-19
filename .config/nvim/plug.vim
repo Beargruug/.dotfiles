@@ -7,6 +7,8 @@ call plug#begin()
   Plug 'Yggdroot/indentLine'
 
 if has("nvim")
+  " training
+  Plug 'ThePrimeagen/vim-be-good'
 
   " Debugger
   Plug 'mfussenegger/nvim-dap'
@@ -16,6 +18,7 @@ if has("nvim")
 
   " Go
   Plug 'fatih/vim-go'
+  " Plug 'crispgm/nvim-go'
 
   "Worktree
   Plug 'ThePrimeagen/git-worktree.nvim'
@@ -81,6 +84,8 @@ if has("nvim")
   " Themes
   Plug 'gruvbox-community/gruvbox'
   Plug 'Mofiqul/vscode.nvim'
+
+  " Not sure if needed
   
 endif
 
