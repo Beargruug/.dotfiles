@@ -1,6 +1,5 @@
-nnoremap <silent> sf <cmd>Telescope file_browser<cr>
+vim.keymap.set('n', 'sf', ":Telescope file_browser<CR>")
 
-lua << EOF
 local fb_actions = require "telescope".extensions.file_browser.actions
 
 local function telescope_buffer_dir()
@@ -43,4 +42,3 @@ require("telescope").setup {
 -- To get telescope-file-browser loaded and working with telescope,
 -- you need to call load_extension, somewhere after setup function:
 require("telescope").load_extension "file_browser"
-EOF
