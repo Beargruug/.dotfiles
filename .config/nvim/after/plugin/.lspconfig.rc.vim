@@ -7,11 +7,16 @@ lua << EOF
 EOF
 
 lua << EOF
+local lsp = require('lsp-zero')
+
 local nvim_lsp = require('lspconfig')
 local protocol = require'vim.lsp.protocol'
-local lsp_installer = require('nvim-lsp-installer')
+--local lsp_installer = require('nvim-lsp-installer')
 local cmp = require('cmp')
 local null_ls = require('null-ls')
+
+lsp.preset('recommended')
+lsp.setup()
 
 vim.diagnostic.config({ virtual_text = { source = true } })
 
@@ -23,15 +28,15 @@ local servers = {
 }
 
 -- install servers if not already existing
-for _, name in pairs(servers) do
-  local server_is_found, server = lsp_installer.get_server(name)
-  if server_is_found then
-    if not server:is_installed() then
-      print('Installing ' .. name)
-      server:install()
-    end
-  end
-end
+-- for _, name in pairs(servers) do
+--   local server_is_found, server = lsp_installer.get_server(name)
+--   if server_is_found then
+--     if not server:is_installed() then
+--       print('Installing ' .. name)
+--       server:install()
+--     end
+--   end
+-- end
 
 -- setup nvim-cmp
 local has_words_before = function()
@@ -84,18 +89,18 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- setup the servers on first init and with different configs for it
 -- this also handles the basic nvim_lsp setup (which can be ignored here)
-lsp_installer.on_server_ready(function(server)
-  local on_attach = function(client, bufnr)
-    -- disable formatting of tsserver (null-ls should do it with prettier/eslint)
-    if server.name == 'tsserver' then
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
-    end
-  end
-
-  local opts = { capabilities = capabilities, on_attach = on_attach }
-  server:setup(opts)
-end)
+-- lsp_installer.on_server_ready(function(server)
+--   local on_attach = function(client, bufnr)
+--     -- disable formatting of tsserver (null-ls should do it with prettier/eslint)
+--     if server.name == 'tsserver' then
+--       client.server_capabilities.document_formatting = false
+--       client.server_capabilities.document_range_formatting = false
+--     end
+--   end
+-- 
+--   local opts = { capabilities = capabilities, on_attach = on_attach }
+--   server:setup(opts)
+-- end)
 
 --- Use an on_attach function to only map the following keys
 --- after the language server attaches to the current buffer

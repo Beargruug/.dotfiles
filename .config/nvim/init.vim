@@ -23,6 +23,17 @@ set cmdheight=1
 set laststatus=3
 set scrolloff=8
 set expandtab
+set noswapfile 
+set nobackup
+" Let's save undo info!
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/undodir")
+    call mkdir($HOME."/.vim/undodir", "", 0700)
+endif
+set undodir=~/.vim/undodir
+set undofile
 set mouse=a
 "let loaded_matchparen = 1
 set backupskip=/tmp/*,/private/tmp/*
