@@ -3,8 +3,10 @@ if has("nvim")
 endif
 
 call plug#begin()
-
   Plug 'Yggdroot/indentLine'
+  
+  " Copilot
+  " Plug 'github/copilot.vim'
 
 if has("nvim")
   " Training
@@ -38,19 +40,45 @@ if has("nvim")
   Plug 'eckon/treesitter-current-functions'
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 
-  " LSP
+  " LSP Support
   Plug 'neovim/nvim-lspconfig'
-  Plug 'williamboman/nvim-lsp-installer'
+  Plug 'williamboman/mason.nvim'
+  Plug 'williamboman/mason-lspconfig.nvim'
+  Plug 'jose-elias-alvarez/null-ls.nvim'
+  " Plug 'akinsho/nvim-bufferline.lua'
+  " Plug 'folke/lsp-colors.nvim'
+  
+  " Autocompletion
   Plug 'hrsh7th/nvim-cmp'
-  Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-path'
+  Plug 'saadparwaiz1/cmp_luasnip'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-nvim-lua'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  
+  "  Snippets
+  Plug 'L3MON4D3/LuaSnip'
+  Plug 'rafamadriz/friendly-snippets'
   Plug 'hrsh7th/vim-vsnip'
   Plug 'hrsh7th/cmp-vsnip'
-  Plug 'rafamadriz/friendly-snippets'
-  Plug 'jose-elias-alvarez/null-ls.nvim'
-  Plug 'akinsho/nvim-bufferline.lua'
-  Plug 'folke/lsp-colors.nvim'
+  
+  Plug 'VonHeikemen/lsp-zero.nvim'
+
+  " LSP
+  " Plug 'neovim/nvim-lspconfig'
+  " Plug 'williamboman/nvim-lsp-installer'
+  " Plug 'hrsh7th/nvim-cmp'
+  " Plug 'hrsh7th/cmp-nvim-lsp'
+  " Plug 'hrsh7th/cmp-buffer'
+  " Plug 'hrsh7th/cmp-path'
+  " Plug 'hrsh7th/vim-vsnip'
+  " Plug 'hrsh7th/cmp-vsnip'
+  " Plug 'rafamadriz/friendly-snippets'
+  " Plug 'jose-elias-alvarez/null-ls.nvim'
+  " Plug 'akinsho/nvim-bufferline.lua'
+  " Plug 'folke/lsp-colors.nvim'
 
   " Package Update
   Plug 'Nguyen-Hoang-Nam/vim-version'
@@ -60,6 +88,8 @@ if has("nvim")
   Plug 'airblade/vim-gitgutter'
   Plug 'APZelos/blamer.nvim'
 
+  " UndoTree
+  Plug 'mbbill/undotree'
 
   " Telescope
   Plug 'nvim-telescope/telescope.nvim'

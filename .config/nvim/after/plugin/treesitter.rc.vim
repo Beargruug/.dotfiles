@@ -7,7 +7,6 @@ lua <<EOF
 require('nvim-treesitter.configs').setup({
   highlight = {
     enable = true,
-    disable = {},
   },
   context = {
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
@@ -28,12 +27,6 @@ require('nvim-treesitter.configs').setup({
       "switch",
       "case",
       },
-
-    rust = {
-      "loop_expression",
-      "impl_item",
-      },
-
     typescript = {
       "class_declaration",
       "abstract_class_declaration",
@@ -43,11 +36,8 @@ require('nvim-treesitter.configs').setup({
   },
   rainbow = {
     enable = true,
-    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
     max_file_lines = nil, -- Do not enable for files with more than n lines, int
-    -- colors = {}, -- table of hex strings
-    -- termcolors = {} -- table of colour name strings
   },
   indent = {
     enable = false,
@@ -58,12 +48,10 @@ require('nvim-treesitter.configs').setup({
   },
   ensure_installed = {
     "tsx",
-    "toml",
     "fish",
-    "php",
     "json",
     "yaml",
-    "swift",
+    "go",
     "html",
     "scss"
   },
