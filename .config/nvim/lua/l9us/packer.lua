@@ -15,7 +15,7 @@ return require('packer').startup(function(use)
       vim.cmd('colorscheme gruvbox')
     end
   })
-
+  use('~/workspaces/plugins/keymaps_cheatsheet.nvim')
   use {
     "ThePrimeagen/refactoring.nvim",
     requires = {
@@ -25,7 +25,7 @@ return require('packer').startup(function(use)
   }
 
   -- Treesitter
-  use('nvim-treesitter/nvim-treesitter')
+  use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
   use('nvim-treesitter/nvim-treesitter-context')
   use('eckon/treesitter-current-functions')
 

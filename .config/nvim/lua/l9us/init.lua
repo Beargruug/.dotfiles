@@ -1,5 +1,6 @@
 require('l9us.set')
 require('l9us.remap')
+require('l9us.globals')
 
 local augroup = vim.api.nvim_create_augroup
 local L9usGroup = augroup('L9usGroup ', {})

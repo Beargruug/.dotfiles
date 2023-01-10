@@ -145,6 +145,11 @@ _G.packer_plugins = {
     path = "/Users/f.scheid/.local/share/nvim/site/pack/packer/start/indentLine",
     url = "https://github.com/Yggdroot/indentLine"
   },
+  ["keymaps_cheatsheet.nvim"] = {
+    loaded = true,
+    path = "/Users/f.scheid/.local/share/nvim/site/pack/packer/start/keymaps_cheatsheet.nvim",
+    url = "/Users/f.scheid/workspaces/plugins/keymaps_cheatsheet.nvim"
+  },
   ["lsp-colors.nvim"] = {
     loaded = true,
     path = "/Users/f.scheid/.local/share/nvim/site/pack/packer/start/lsp-colors.nvim",
