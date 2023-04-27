@@ -19,18 +19,10 @@ alias ll='exa -l -g --icons'
 alias lla='ll -a'
 alias ls='ls -p -G'
 alias vim=nvim
-alias ide='~/ide.sh'
 
-# workspace alias
-alias frontend='cd ~/workspaces/frontend'
-alias backend='cd ~/workspaces/backend'
-alias workspace='cd ~/workspaces'
-alias webapp='cd ~/workspaces/frontend/webapp'
-alias layout='cd ~/workspaces/frontend/react-layout'
-alias outlook='cd ~/workspaces/frontend/outlook-addin'
-alias identity='cd ~/workspaces/frontend/identity'
-alias api='cd ~/workspaces/backend/api-service'
-alias adapter='cd ~/workspaces/backend/adapter-service'
+
+# workspace alias here
+
 
 # Load Git completion
 #zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
