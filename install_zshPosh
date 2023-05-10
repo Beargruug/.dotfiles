@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+
+brew install jandedobbeleer/oh-my-posh/oh-my-posh
+
+oh-my-posh get shell
