@@ -1,5 +1,7 @@
 #!/usr/bin/sh
 
+brew install stow
+
 brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
 oh-my-posh get shell
