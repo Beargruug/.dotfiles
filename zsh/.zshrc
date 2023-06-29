@@ -3,7 +3,7 @@
 
 VIM="nvim"
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-posh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -77,7 +77,7 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
+source /opt/homebrew/opt/oh-my-posh/oh-my-zsh.sh
 
 # User configuration
 
@@ -108,12 +108,10 @@ alias ll='exa -l -g --icons'
 alias lla='ll -a'
 alias ls='ls -p -G'
 alias vim=nvim
-alias ide='~/ide.sh'
 
 # workspace alias
-alias frontend='cd ~/workspaces/frontend'
-alias backend='cd ~/workspaces/backend'
-alias workspace='cd ~/workspaces'
+alias frontend='cd ~/work/frontend'
+alias backend='cd ~/work/backend-svc'
 
 # GOLANG
 export GOPATH=$HOME/.go
@@ -122,11 +120,10 @@ export PATH=$PATH:$GOBIN
 export GOROOT=$(brew --prefix golang)/libexec
 export PYTHONPATH="~/Library/Python/3.9/lib/python/site-packages:$PYTHONPATH"
 
+
 # NVM
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-source /Users/f.scheid/.docker/init-zsh.sh || true # Added by Docker Desktop
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/env zsh
 
 brew install exa
 brew install stow
