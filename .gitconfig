@@ -12,12 +12,13 @@
   grep = auto
   ui = auto
 [alias]
-  a = "!git status --short | peco | awk '{print $2}' | xargs git add"
+  ga = git add
   d = diff
   co = checkout
   ci = commit
   ca = commit -a
   s = status
+  gs = git status
   gp = git push
   gpo = git push origin
   gc = git commit
