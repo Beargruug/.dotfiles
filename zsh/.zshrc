@@ -73,11 +73,19 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  zsh-autosuggestions
-  zsh-syntax-highlighting
+  vi-mode
 )
 
-source /opt/homebrew/opt/oh-my-posh/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
+
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+
+# defaults
+VI_MODE_CURSOR_NORMAL=2
+VI_MODE_CURSOR_VISUAL=2
+VI_MODE_CURSOR_INSERT=2
+VI_MODE_CURSOR_OPPEND=2
 
 # User configuration
 
@@ -109,16 +117,17 @@ alias lla='ll -a'
 alias ls='ls -p -G'
 alias vim=nvim
 
-# workspace alias
-alias frontend='cd ~/work/frontend'
-alias backend='cd ~/work/backend-svc'
-
 # GOLANG
 export GOPATH=$HOME/.go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 export GOROOT=$(brew --prefix golang)/libexec
 export PYTHONPATH="~/Library/Python/3.9/lib/python/site-packages:$PYTHONPATH"
+
+export GITLAB_BASE_URL=https://gitlab.com/
+export GITLAB_TOKEN=glpat-GpsWNxtyDy_tFJnpSvMn
+export COMMITTER_NAME="Fabian Scheid"
+export COMMITTER_EMAIL=info@fabianmail.com
 
 
 # NVM
@@ -127,3 +136,4 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
