@@ -28,8 +28,10 @@
   add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
 [hub]
   protocol = https
+[commit]
+  template = ./.gitmessage
 [github]
-	user = l9us
+	user = beargruug
 [diff]
   tool = nvimdiff
 [difftool "nvimdiff"]
