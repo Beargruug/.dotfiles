@@ -29,7 +29,7 @@
 [hub]
   protocol = https
 [commit]
-  template = ./.gitmessage
+  template = ~/.dotfiles/.gitmessage
 [github]
 	user = beargruug
 [diff]
