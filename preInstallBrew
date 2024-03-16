@@ -1,6 +1,12 @@
 #!/usr/bin/env zsh
 
+brew install neovim
+brew install tmux
+brew install tig
 brew install exa
 brew install stow
+brew install fzf
+brew install htop
+brew install rg
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
