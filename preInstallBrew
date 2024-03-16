@@ -10,3 +10,7 @@ brew install htop
 brew install rg
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+brew install --cask shureplus-motiv
+brew install --cask 1password
+brew install --cask spectacle
