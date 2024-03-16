@@ -3,6 +3,4 @@
 brew install exa
 brew install stow
 
-brew install jandedobbeleer/oh-my-posh/oh-my-posh
-
-oh-my-posh get shell
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

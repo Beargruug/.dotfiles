@@ -124,10 +124,10 @@ export PATH=$PATH:$GOBIN
 export GOROOT=$(brew --prefix golang)/libexec
 export PYTHONPATH="~/Library/Python/3.9/lib/python/site-packages:$PYTHONPATH"
 
-export GITLAB_BASE_URL=https://gitlab.com/
-export GITLAB_TOKEN=glpat-GpsWNxtyDy_tFJnpSvMn
-export COMMITTER_NAME="Fabian Scheid"
-export COMMITTER_EMAIL=info@fabianmail.com
+# export GITLAB_BASE_URL=https://gitlab.com/
+# export GITLAB_TOKEN=TOKEN
+# export COMMITTER_NAME="Fabian Scheid"
+# export COMMITTER_EMAIL=info@fabianmail.com
 
 
 # NVM
