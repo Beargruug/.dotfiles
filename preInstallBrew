@@ -16,3 +16,5 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 brew install --cask shureplus-motiv
 brew install --cask 1password
 brew install --cask spectacle
+brew install --cask vial
+brew install --cask brave-browser
