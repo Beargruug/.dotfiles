@@ -11,7 +11,11 @@ brew install exa
 brew install stow
 brew install fzf
 brew install htop
-brew install rg
+brew install node
+brew install python
+brew install ripgrep
+brew install tree-sitter
+brew install go
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
