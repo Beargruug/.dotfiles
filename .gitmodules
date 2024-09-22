@@ -1,4 +1,4 @@
 [submodule "nvim/.config/nvim"]
 	path = nvim/.config/nvim
-  ; url = https://github.com/Beargruug/nvim.git
-	url = git@github.com:Beargruug/nvim.git
+  	url = https://github.com/Beargruug/nvim.git
+  ; url = git@github.com:Beargruug/nvim.git
