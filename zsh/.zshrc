@@ -112,7 +112,7 @@ VI_MODE_CURSOR_OPPEND=2
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ll='exa -l -g --icons'
+alias ll='eza -l -g --icons'
 alias lla='ll -a'
 alias ls='ls -p -G'
 alias vim=nvim
