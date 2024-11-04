@@ -4,4 +4,8 @@ personal/*
 bin/.local/share/
 bin/.local/state/
 nvim/.config/github-copilot/
+nvim/.config/gh/
+nvim/.config/raycast/
+nvim/.config/iterm/
+nvim/.config/efm-langserver/
 
