@@ -4,9 +4,6 @@ theme = kanagawabones
 shell-integration-features = no-cursor,no-sudo,no-title
 gtk-titlebar = false
 font-feature= -calt
-keybind= alt+u=ignore
-keybind= alt+o=ignore 
-keybind= alt+a=ignore 
 
 # what is a prefix?
 # keybind = ctrl+d=scroll_page_fractional:0.5
