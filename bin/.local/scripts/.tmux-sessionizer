@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+if [[ "$(pwd)" == $HOME/personal ]]; then
+    clear
+    return
+fi
+
+tmux new-window -dn scratch
+vim .
+clear
