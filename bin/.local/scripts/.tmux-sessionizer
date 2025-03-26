@@ -6,5 +6,6 @@ if [[ "$(pwd)" == $HOME/personal ]]; then
 fi
 
 tmux new-window -dn scratch
+tmux new-window -dn server
 vim .
 clear
