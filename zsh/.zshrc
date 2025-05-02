@@ -112,9 +112,8 @@ VI_MODE_CURSOR_OPPEND=2
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ll='eza -l -g --icons'
-alias lla='ll -a'
-alias ls='ls -p -G'
+alias ll='eza -l --icons'
+alias lla='eza -l -a'
 alias vim=nvim
 
 # GOLANG
@@ -123,17 +122,16 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 export GOROOT=$(brew --prefix golang)/libexec
 export PYTHONPATH="~/Library/Python/3.9/lib/python/site-packages:$PYTHONPATH"
-
-# export GITLAB_BASE_URL=https://gitlab.com/
-# export GITLAB_TOKEN=TOKEN
-# export COMMITTER_NAME="Fabian Scheid"
-# export COMMITTER_EMAIL=info@fabianmail.com
-
+export VISUAL="nvim"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh #If you come from bash you might have to change your $PATH.
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# export PATH="$PATH:$HOME/.rvm/bin"
+# export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+eval "$(rbenv init -)"
