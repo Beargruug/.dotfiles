@@ -32,10 +32,6 @@ default-root-container-orientation = 'auto'
 if.app-name-regex-substring = 'finder'
 run = 'layout floating'
 
-[[on-window-detected]]
-if.app-name-regex-substring = 'rambox'
-run = 'layout floating'
-
 [mode.main.binding]
     # i3 wraps focus by default
     alt-h =         'focus --boundaries-action wrap-around-the-workspace left'
@@ -96,9 +92,6 @@ run = 'layout floating'
     alt-shift-8 = 'move-node-to-workspace 8'
     alt-shift-9 = 'move-node-to-workspace 9'
     alt-shift-0 = 'move-node-to-workspace 10'
-
-    alt-x = 'exec-and-forget open -a /Applications/Rambox.app'
-
 
     alt-shift-c = 'reload-config'
 
