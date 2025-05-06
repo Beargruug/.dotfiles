@@ -28,16 +28,15 @@ default-root-container-layout = 'tiles'
 #               tall monitor (anything higher than wide) gets vertical orientation
 default-root-container-orientation = 'auto'
 
+[[on-window-detected]]
+if.app-name-regex-substring = 'finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'rambox'
+run = 'layout floating'
 
 [mode.main.binding]
-    # See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
-    alt-enter = '''exec-and-forget osascript -e '
-    tell application "Ghostty"
-        do script
-        activate
-    end tell'
-    '''
-
     # i3 wraps focus by default
     alt-h =         'focus --boundaries-action wrap-around-the-workspace left'
     alt-j =         'focus --boundaries-action wrap-around-the-workspace down'
@@ -97,6 +96,9 @@ default-root-container-orientation = 'auto'
     alt-shift-8 = 'move-node-to-workspace 8'
     alt-shift-9 = 'move-node-to-workspace 9'
     alt-shift-0 = 'move-node-to-workspace 10'
+
+    alt-x = 'exec-and-forget open -a /Applications/Rambox.app'
+
 
     alt-shift-c = 'reload-config'
 
