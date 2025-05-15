@@ -29,6 +29,10 @@ default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'kalender'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'finder'
 run = 'layout floating'
 
