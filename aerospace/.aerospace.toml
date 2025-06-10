@@ -118,5 +118,5 @@ run = 'layout floating'
     esc = 'mode main'
 
 [gaps]
-outer.top =        20
+outer.top =        32
 
