@@ -118,6 +118,6 @@ run = 'layout floating'
     esc = 'mode main'
 
 [gaps]
-# outer.top =        32
-outer.top =        0
+outer.top =        32
+# outer.top =        0
 
