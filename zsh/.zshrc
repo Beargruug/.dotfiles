@@ -122,6 +122,10 @@ export PATH=$PATH:$GOBIN
 export GOROOT=$(brew --prefix golang)/libexec
 export PYTHONPATH="~/Library/Python/3.9/lib/python/site-packages:$PYTHONPATH"
 export VISUAL="nvim"
+export PATH="/opt/homebrew/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/lib"
+export CPPFLAGS="-I/opt/homebrew/include"
+export PKG_CONFIG_PATH="/opt/homebrew/lib/pkgconfig"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
