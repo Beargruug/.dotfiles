@@ -33,6 +33,10 @@ if.app-name-regex-substring = 'calendar'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'Insta360'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'finder'
 run = 'layout floating'
 
