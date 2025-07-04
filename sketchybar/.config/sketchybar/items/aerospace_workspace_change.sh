@@ -2,11 +2,14 @@
 
 sketchybar --add event aerospace_workspace_change
 RED=0xffed8796
-for sid in $(aerospace list-workspaces --all); do
-    sketchybar --add item "space.$sid" left \
-        --subscribe "space.$sid" aerospace_workspace_change \
-        --set "space.$sid" \
-        icon="$sid" \
+SPACE_ICONS=("3" "4" "5" "7" "8" "10")
+
+for sid in "${!SPACE_ICONS[@]}"
+do
+    sketchybar --add item space.${SPACE_ICONS[$sid]} left \
+        --subscribe space.${SPACE_ICONS[$sid]} aerospace_workspace_change \
+        --set space.${SPACE_ICONS[$sid]} \
+        icon="${SPACE_ICONS[$sid]}" \
         icon.padding_left=5 \
         icon.padding_right=5 \
         label.padding_right=7 \
@@ -21,6 +24,6 @@ for sid in $(aerospace list-workspaces --all); do
         label.background.color=0xff494d64 \
         label.background.corner_radius=9 \
         label.drawing=off \
-        click_script="aerospace workspace $sid" \
-        script="$CONFIG_DIR/plugins/aerospacer.sh $sid"
+        click_script="aerospace workspace ${SPACE_ICONS[$sid]}" \
+        script="$CONFIG_DIR/plugins/aerospacer.sh ${SPACE_ICONS[$sid]}"
 done

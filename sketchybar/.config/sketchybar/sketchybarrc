@@ -18,11 +18,11 @@ default=(
 sketchybar --default "${default[@]}"
 
 # left items
-source "${CONFIG_DIR}/items/aerospace_workspace_change.sh"
-source "${CONFIG_DIR}/items/aerospace_workspace_change_2.sh"
+source "$ITEM_DIR/apple.sh"
+source "$ITEM_DIR/aerospace_workspace_change.sh"
 # right items
-source "${CONFIG_DIR}/items/slack.sh"
-source "${CONFIG_DIR}/items/clock.sh"
+source "$ITEM_DIR/slack.sh"
+source "$ITEM_DIR/clock.sh"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
