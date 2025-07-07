@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 if [[ "$(pwd)" == $HOME/personal ]]; then
     clear
@@ -6,6 +6,5 @@ if [[ "$(pwd)" == $HOME/personal ]]; then
 fi
 
 tmux new-window -dn scratch
-tmux new-window -dn server
 vim .
 clear

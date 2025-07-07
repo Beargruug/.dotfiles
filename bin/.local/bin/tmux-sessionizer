@@ -1,10 +1,101 @@
 #!/usr/bin/env bash
 
+log() {
+    echo "$@"
+}
+
+session_cmd=""
+user_selected=""
+split_type=""
+VERSION="0.1.0"
+target_index=""
+
+while [[ "$#" -gt 0 ]]; do
+    case "$1" in
+    -h | --help)
+        echo "Usage: tmux-sessionizer [OPTIONS] [SEARCH_PATH]"
+        echo "Options:"
+        echo "  -h, --help             Display this help message"
+        echo "  -s, --session <value>  Specify a session command or index (e.g., -s 'echo Hello' or -s 0 for index 0)"
+        echo "  --switch-to <session_name> Switch directly to a session by name (e.g., --switch-to dev)"
+        echo "  --vsplit               Create vertical split (horizontal layout) for session command"
+        echo "  --hsplit               Create horizontal split (vertical layout) for session command"
+        exit 0
+        ;;
+    -s | --session)
+        if [[ -z "$2" ]]; then
+            echo "Session value cannot be empty"
+            exit 1
+        fi
+        session_cmd="$2"
+        # Check if the value is a number (for index handling)
+        if [[ "$session_cmd" =~ ^[0-9]+$ ]]; then
+            target_index="$session_cmd"  # Set as index
+            session_cmd=""  # Clear to avoid treating as command
+        fi
+        shift
+        ;;
+    --switch-to)
+        if [[ -z "$2" ]]; then
+            echo "Session name cannot be empty"
+            exit 1
+        fi
+        target_session="$2"
+        shift
+        ;;
+    --vsplit)
+        split_type="vsplit"
+        ;;
+    --hsplit)
+        split_type="hsplit"
+        ;;
+    -v | --version)
+        echo "tmux-sessionizer version $VERSION"
+        exit 0
+        ;;
+    *)
+        user_selected="$1"
+        ;;
+    esac
+    shift
+done
+
+sanity_check() {
+    if ! command -v tmux &>/dev/null; then
+        log "tmux is not installed. Please install it first."
+        exit 1
+    fi
+
+    if ! command -v fzf &>/dev/null; then
+        log "fzf is not installed. Please install it first."
+        exit 1
+    fi
+}
+
+handle_index_switch() {
+    if [[ -n "$target_index" ]]; then
+        log "Attempting to switch to session at index $target_index"
+        sessions=$(tmux list-sessions -F "#{session_name}" 2>/dev/null)  # Get list of session names
+        session_list=($sessions)  # Convert to array
+        if [[ ${#session_list[@]} -gt 0 && $target_index -lt ${#session_list[@]} ]]; then
+            target_session_name="${session_list[$target_index]}"  # Get session at the specified index
+            log "Switching to session: $target_session_name"
+            switch_to "$target_session_name"
+        else
+            log "Error: No session found at index $target_index"
+            exit 1
+        fi
+        exit 0
+    fi
+}
+
 switch_to() {
     if [[ -z $TMUX ]]; then
-        tmux attach-session -t $1
+        log "attaching to session $1"
+        tmux attach-session -t "$1"
     else
-        tmux switch-client -t $1
+        log "switching to session $1"
+        tmux switch-client -t "$1"
     fi
 }
 
@@ -13,35 +104,192 @@ has_session() {
 }
 
 hydrate() {
-    if [ -f $2/.tmux-sessionizer ]; then
-        tmux send-keys -t $1 "source $2/.tmux-sessionizer" c-M
-    elif [ -f $HOME/.tmux-sessionizer ]; then
-        tmux send-keys -t $1 "source $HOME/.tmux-sessionizer" c-M
+    if [[ ! -z $session_cmd ]]; then
+        log "skipping hydrate for $1 -- using \"$session_cmd\" instead"
+        return
+    elif [ -f "$2/.tmux-sessionizer" ]; then
+        log "sourcing(local) $2/.tmux-sessionizer"
+        tmux send-keys -t "$1" "source $2/.tmux-sessionizer" c-M
+    elif [ -f "$HOME/.tmux-sessionizer" ]; then
+        log "sourcing(global) $HOME/.tmux-sessionizer"
+        tmux send-keys -t "$1" "source $HOME/.tmux-sessionizer" c-M
     fi
 }
 
-if [[ $# -eq 1 ]]; then
-    selected=$1
+is_tmux_running() {
+    tmux_running=$(pgrep tmux)
+
+    if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+        return 1
+    fi
+    return 0
+}
+
+init_pane_cache() {
+    mkdir -p "$PANE_CACHE_DIR"
+    touch "$PANE_CACHE_FILE"
+}
+
+get_pane_id() {
+    local session_idx="$1"  # Still using this parameter, but we'll pass a default value
+    local split_type="$2"
+    init_pane_cache
+    grep "^${session_idx}:${split_type}:" "$PANE_CACHE_FILE" | cut -d: -f3
+}
+
+set_pane_id() {
+    local session_idx="$1"
+    local split_type="$2"
+    local pane_id="$3"
+    init_pane_cache
+
+    # Remove existing entry if it exists
+    grep -v "^${session_idx}:${split_type}:" "$PANE_CACHE_FILE" > "${PANE_CACHE_FILE}.tmp" 2>/dev/null || true
+    mv "${PANE_CACHE_FILE}.tmp" "$PANE_CACHE_FILE"
+
+    # Add new entry
+    echo "${session_idx}:${split_type}:${pane_id}" >> "$PANE_CACHE_FILE"
+}
+
+cleanup_dead_panes() {
+    init_pane_cache
+    local temp_file="${PANE_CACHE_FILE}.tmp"
+
+    while IFS=: read -r idx split pane_id; do
+        if tmux list-panes -a -F "#{pane_id}" 2>/dev/null | grep -q "^${pane_id}$"; then
+            echo "${idx}:${split}:${pane_id}" >> "$temp_file"
+        fi
+    done < "$PANE_CACHE_FILE"
+
+    mv "$temp_file" "$PANE_CACHE_FILE" 2>/dev/null || touch "$PANE_CACHE_FILE"
+}
+
+sanity_check
+
+# if TS_SEARCH_PATHS is not set use default
+[[ -n "$TS_SEARCH_PATHS" ]] || TS_SEARCH_PATHS=(~/ ~/personal ~/work)
+
+# Add any extra search paths to the TS_SEARCH_PATHS array
+if [[ ${#TS_EXTRA_SEARCH_PATHS[@]} -gt 0 ]]; then
+    TS_SEARCH_PATHS+=("${TS_EXTRA_SEARCH_PATHS[@]}")
+fi
+
+find_dirs() {
+    if [[ -n "${TMUX}" ]]; then
+        current_session=$(tmux display-message -p '#S')
+        tmux list-sessions -F "[TMUX] #{session_name}" 2>/dev/null | grep -vFx "[TMUX] $current_session"
+    else
+        tmux list-sessions -F "[TMUX] #{session_name}" 2>/dev/null
+    fi
+
+    for entry in "${TS_SEARCH_PATHS[@]}"; do
+        if [[ "$entry" =~ ^([^:]+):([0-9]+)$ ]]; then
+            path="${BASH_REMATCH[1]}"
+            depth="${BASH_REMATCH[2]}"
+        else
+            path="$entry"
+        fi
+
+        [[ -d "$path" ]] && find "$path" -mindepth 1 -maxdepth "${depth:-${TS_MAX_DEPTH:-1}}" -path '*/.git' -prune -o -type d -print
+    done
+}
+
+
+handle_session_cmd() {
+    log "executing session command $session_cmd with split_type=$split_type"
+    if ! is_tmux_running; then
+        echo "Error: tmux is not running. Please start tmux first before using session commands."
+        exit 1
+    fi
+
+    current_session=$(tmux display-message -p '#S')
+
+    if [[ -n "$split_type" ]]; then
+        handle_split_session_cmd "$current_session"
+    else
+        handle_window_session_cmd "$current_session"
+    fi
+    exit 0
+}
+
+
+handle_window_session_cmd() {
+    local current_session="$1"
+    # Simplified target since we're not using session_idx
+    target="$current_session:custom_session"  # You can customize this if needed
+
+    log "target: $target command $session_cmd"
+    if tmux has-session -t "$target" 2>/dev/null; then
+        switch_to "$target"
+    else
+        log "executing session command: tmux neww -dt $target $session_cmd"
+        tmux neww -dt "$target" "$session_cmd"
+        hydrate "$target" "$selected"
+        tmux select-window -t "$target"
+    fi
+}
+
+handle_split_session_cmd() {
+    local current_session="$1"
+    cleanup_dead_panes
+
+    local existing_pane_id=$(get_pane_id "$default_session_idx" "$split_type")
+
+    if [[ -n "$existing_pane_id" ]] && tmux list-panes -a -F "#{pane_id}" 2>/dev/null | grep -q "^${existing_pane_id}$"; then
+        log "switching to existing pane $existing_pane_id"
+        tmux select-pane -t "$existing_pane_id"
+        if [[ -z $TMUX ]]; then
+            tmux attach-session -t "$current_session"
+        else
+            tmux switch-client -t "$current_session"
+        fi
+    else
+        local split_flag=""
+        if [[ "$split_type" == "vsplit" ]]; then
+            split_flag="-h"
+        else
+            split_flag="-v"
+        fi
+
+        log "creating new split: tmux split-window $split_flag -c $(pwd) $session_cmd"
+        local new_pane_id=$(tmux split-window $split_flag -c "$(pwd)" -P -F "#{pane_id}" "$session_cmd")
+
+        if [[ -n "$new_pane_id" ]]; then
+            set_pane_id "$default_session_idx" "$split_type" "$new_pane_id"
+            log "created pane $new_pane_id for session_idx=$default_session_idx split_type=$split_type"
+        fi
+    fi
+}
+
+# Call this after argument parsing
+handle_index_switch  # Check for index first
+
+if [[ ! -z $session_cmd ]]; then
+    handle_session_cmd
+elif [[ ! -z $user_selected ]]; then
+    selected="$user_selected"
 else
-    selected=$(find ~/ ~/personal ~/work -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find_dirs | fzf)
 fi
 
 if [[ -z $selected ]]; then
     exit 0
 fi
 
+if [[ "$selected" =~ ^\[TMUX\]\ (.+)$ ]]; then
+    selected="${BASH_REMATCH[1]}"
+fi
+
 selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
-    hydrate $selected_name $selected
-    exit 0
+if ! is_tmux_running; then
+    tmux new-session -ds "$selected_name" -c "$selected"
+    hydrate "$selected_name" "$selected"
 fi
 
-if ! has_session $selected_name; then
-    tmux new-session -ds $selected_name -c $selected
-    hydrate $selected_name $selected
+if ! has_session "$selected_name"; then
+    tmux new-session -ds "$selected_name" -c "$selected"
+    hydrate "$selected_name" "$selected"
 fi
 
-switch_to $selected_name
+switch_to "$selected_name"
