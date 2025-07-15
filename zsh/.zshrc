@@ -116,9 +116,6 @@ alias lla='eza -l -a'
 alias vim=nvim
 
 bindkey -s ^f "~/.local/bin/tmux-sessionizer\n"
-bindkey -s '\et' "~/.local/bin/tmux-sessionizer -s 0\n"
-bindkey -s '\eg' "~/.local/bin/tmux-sessionizer -s 1\n"
-bindkey -s '\eb' "~/.local/bin/tmux-sessionizer -s 2\n"
 # GOLANG
 export GOPATH=$HOME/.go
 export GOBIN=$GOPATH/bin
