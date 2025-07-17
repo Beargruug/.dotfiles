@@ -126,6 +126,7 @@ run = 'layout floating'
     esc = 'mode main'
 
 [gaps]
-outer.top =        32
+# outer.top =        32
+outer.top = [{ monitor."main" = 32 }, {monitor."secondary" = 0}, 32]
 # outer.top =        0
 
