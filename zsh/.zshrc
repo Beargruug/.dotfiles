@@ -114,6 +114,7 @@ VI_MODE_CURSOR_OPPEND=2
 alias ll='eza -l --icons'
 alias lla='eza -l -a'
 alias vim=nvim
+alias autocommit="~/.dotfiles/auto_pr.sh"
 
 bindkey -s ^f "~/.local/bin/tmux-sessionizer\n"
 # GOLANG
