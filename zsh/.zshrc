@@ -114,7 +114,6 @@ alias ll='eza -l --icons'
 alias lla='eza -l -a'
 alias vim=nvim
 alias autocommit="~/.dotfiles/auto_pr.sh"
-alias rfx="~/work/rfx-cli/rfx"
 
 bindkey -s ^f "~/.local/bin/tmux-sessionizer\n"
 # GOLANG

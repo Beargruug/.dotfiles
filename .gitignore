@@ -3,6 +3,7 @@
 personal/*
 bin/.local/share/
 bin/.local/state/
+bin/.local/bin/rfx
 nvim/.config/github-copilot/
 nvim/.config/gh/
 nvim/.config/raycast/
