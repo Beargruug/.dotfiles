@@ -117,6 +117,7 @@ alias vim=nvim
 alias autocommit="~/.dotfiles/auto_pr.sh"
 
 bindkey -s ^f "~/.local/bin/tmux-sessionizer\n"
+#
 # GOLANG
 export GOPATH=$HOME/.go
 export GOBIN=$GOPATH/bin
