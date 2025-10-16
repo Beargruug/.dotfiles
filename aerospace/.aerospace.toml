@@ -130,9 +130,14 @@ run = 'layout floating'
     esc = 'mode main'
 
 [gaps]
+outer.bottom = 8
+outer.right = 8
+outer.left = 8
+inner.horizontal = 8
+inner.vertical = 8
 outer.top = [
-  { monitor."Built-in Retina Display" = 0 },
-  { monitor."main" = 32 },
-  32
+  { monitor."Built-in Retina Display" = 2 },
+  { monitor."main" = 40 },
+  40
 ]
 
