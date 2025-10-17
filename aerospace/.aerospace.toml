@@ -79,7 +79,7 @@ run = 'layout floating'
     # alt-h = 'split horizontal'
     # alt-v = 'split vertical'
 
-    alt-f = 'fullscreen'
+    cmd-f = 'fullscreen'
 
     # alt-s = 'layout v_accordion' # 'layout stacking' in i3
     alt-w = 'layout h_accordion' # 'layout tabbed' in i3
