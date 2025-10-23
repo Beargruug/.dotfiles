@@ -13,7 +13,7 @@ do
         icon.padding_left=4 \
         icon.padding_right=4 \
         label.padding_right=7 \
-        background.color=0xffffffff \
+        background.color=0xffc8c3bd \
         background.corner_radius=5 \
         background.height=16 \
         background.padding_left=7 \
@@ -22,7 +22,7 @@ do
         label.font="sketchybar-app-font:Regular:16.0" \
         label.background.height=20 \
         label.background.drawing=on \
-        label.background.color=0xff494d64 \
+        label.background.color=0xffc8c3bd \
         label.background.corner_radius=5 \
         label.drawing=off \
         click_script="aerospace workspace ${SPACE_ICONS[$sid]}" \
