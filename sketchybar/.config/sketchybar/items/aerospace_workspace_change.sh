@@ -2,7 +2,7 @@
 
 sketchybar --add event aerospace_workspace_change
 RED=0xffed8796
-SPACE_ICONS=("1" "3" "5" "7" "8")
+SPACE_ICONS=("1" "3" "5" "8")
 
 for sid in "${!SPACE_ICONS[@]}"
 do
