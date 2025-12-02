@@ -137,3 +137,6 @@ export NVM_DIR="$HOME/.nvm"
 
 [[ -f ~/.zshrc.k8s ]] && source ~/.zshrc.k8s
 
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
