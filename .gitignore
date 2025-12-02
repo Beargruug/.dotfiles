@@ -1,6 +1,9 @@
 .DS_Store
 *.sw[po]
 personal/*
+bin/.local/bin/lsd
+bin/.local/bin/webi
+bin/.local/opt/lsd-v1.2.0/bin/lsd
 bin/.local/share/
 bin/.local/state/
 bin/.local/bin/rfx
