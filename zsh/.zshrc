@@ -128,6 +128,9 @@ export LDFLAGS="-L/opt/homebrew/lib"
 export CPPFLAGS="-I/opt/homebrew/include"
 export PKG_CONFIG_PATH="/opt/homebrew/lib/pkgconfig"
 
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 # NVM
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
