@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SPACE_ICONS=("1" "3" "5" "8")
+SPACE_ICONS=("1" "2" "3" "5")
 
 for sid in "${SPACE_ICONS[@]}"; do
     if [ "$sid" = "$FOCUSED_WORKSPACE" ]; then
