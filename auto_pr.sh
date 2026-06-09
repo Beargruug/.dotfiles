@@ -1,12 +1,12 @@
 #!/bin/bash
 
-pushd ~/.dotfiles/.config/nvim
+pushd ~/.dotfiles/nvim/.config/nvim
 git add .
 git commit -m 'automated commit'
 git push
 popd
 
-pushd ~/.dotfiles/
+pushd ~/.dotfiles
 git add .
 git commit -m 'automated commit'
 git push
