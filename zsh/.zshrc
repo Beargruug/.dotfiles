@@ -114,6 +114,8 @@ alias ll='eza -l --icons'
 alias lla='eza -l -a'
 alias vim=nvim
 alias autocommit="~/.dotfiles/auto_pr.sh"
+alias ocw='export GH_CONFIG_DIR=~/.config/gh-work && opencode'
+alias ocp='export GH_CONFIG_DIR=~/.config/gh-personal && opencode'
 
 bindkey -s ^f "~/.local/bin/tmux-sessionizer\n"
 # GOLANG
