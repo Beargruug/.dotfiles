@@ -116,6 +116,7 @@ alias vim=nvim
 alias autocommit="~/.dotfiles/auto_pr.sh"
 alias ocw='export GH_CONFIG_DIR=~/.config/gh-work && opencode'
 alias ocp='export GH_CONFIG_DIR=~/.config/gh-personal && opencode'
+alias ccsessions='ls -t ~/.claude/projects/$(pwd | sed "s/[^a-zA-Z0-9]/-/g")/*.jsonl 2>/dev/null | xargs -n1 basename | sed "s/.jsonl//"'
 
 bindkey -s ^f "~/.local/bin/tmux-sessionizer\n"
 # GOLANG
