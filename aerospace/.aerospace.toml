@@ -2,7 +2,7 @@
 # sketchbar has a built-in detection of already running process,
 # so it won't be run twice on AeroSpace restart
 after-startup-command = ['exec-and-forget sketchybar']
-
+config-version = 2
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = ['/bin/bash', '-c',
     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
