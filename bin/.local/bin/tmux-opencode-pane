@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Toggle a persistent opencode pane into/out of the current window.
+# One opencode per tmux session; it lives in a hidden holder session while
+# toggled off, so it keeps running and can be pulled into any window.
+set -uo pipefail
+
+holder="_opencode"
+width="${OPENCODE_PANE_WIDTH:-40%}"
+
+pane="$(tmux show -qv @opencode_pane)"
+
+# forget a dead pane id
+if [ -n "$pane" ] && ! tmux list-panes -a -F '#{pane_id}' | grep -qx "$pane"; then
+  pane=""
+fi
+
+if [ -z "$pane" ]; then
+  # window 0 is just an anchor so the holder survives while the pane is joined out
+  tmux has-session -t "$holder" 2>/dev/null ||
+    tmux new-session -d -s "$holder" -c "$HOME"
+  path="$(tmux display-message -p '#{pane_current_path}')"
+  pane="$(tmux new-window -d -P -F '#{pane_id}' -t "$holder": -c "$path" "opencode")"
+  tmux set @opencode_pane "$pane"
+fi
+
+win="$(tmux display-message -p '#{window_id}')"
+
+if [ "$(tmux display-message -pt "$pane" '#{window_id}')" = "$win" ]; then
+  tmux break-pane -d -s "$pane" -t "$holder":
+else
+  tmux join-pane -h -l "$width" -s "$pane" -t "$win"
+  tmux select-pane -t "$pane"
+fi
