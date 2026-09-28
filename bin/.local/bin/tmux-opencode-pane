@@ -5,7 +5,7 @@
 set -uo pipefail
 
 holder="_opencode"
-width="${OPENCODE_PANE_WIDTH:-40%}"
+width="${OPENCODE_PANE_WIDTH:-50%}"
 
 pane="$(tmux show -qv @opencode_pane)"
 
