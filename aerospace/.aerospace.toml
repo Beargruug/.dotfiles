@@ -79,7 +79,10 @@ run = 'layout floating'
     # alt-h = 'split horizontal'
     # alt-v = 'split vertical'
 
-    alt-f = 'fullscreen'
+    # edge-to-edge, ignores gaps, covers sketchybar, stays in this workspace
+    alt-f = 'fullscreen --no-outer-gaps'
+    # real macOS fullscreen: own Space, menu bar hidden, leaves AeroSpace tiling
+    alt-shift-f = 'macos-native-fullscreen'
 
     # alt-s = 'layout v_accordion' # 'layout stacking' in i3
     alt-w = 'layout h_accordion' # 'layout tabbed' in i3
@@ -95,16 +98,19 @@ run = 'layout floating'
     # should be supported at all https://github.com/nikitabobko/AeroSpace/issues/5
     # alt-a = 'focus parent'
 
-    cmd-1 = 'workspace 1'
-    cmd-2 = 'workspace 2'
-    cmd-3 = 'workspace 3'
-    cmd-4 = 'workspace 4'
-    cmd-5 = 'workspace 5'
-    cmd-6 = 'workspace 6'
-    cmd-7 = 'workspace 7'
-    cmd-8 = 'workspace 8'
-    cmd-9 = 'workspace 9'
-    cmd-0 = 'workspace 10'
+    # alt-N (not cmd-N): cmd-1..9 is reserved by Slack (workspace switch)
+    # and browsers (tab switch). AeroSpace grabs hotkeys globally, so binding
+    # cmd-N here makes those shortcuts unreachable inside the apps.
+    alt-1 = 'workspace 1'
+    alt-2 = 'workspace 2'
+    alt-3 = 'workspace 3'
+    alt-4 = 'workspace 4'
+    alt-5 = 'workspace 5'
+    alt-6 = 'workspace 6'
+    alt-7 = 'workspace 7'
+    alt-8 = 'workspace 8'
+    alt-9 = 'workspace 9'
+    alt-0 = 'workspace 10'
 
     alt-shift-1 = 'move-node-to-workspace 1'
     alt-shift-2 = 'move-node-to-workspace 2'
@@ -117,7 +123,8 @@ run = 'layout floating'
     alt-shift-9 = 'move-node-to-workspace 9'
     alt-shift-0 = 'move-node-to-workspace 10'
 
-    cmd-shift-c = 'reload-config'
+    # alt-shift-r (not cmd-shift-c): cmd-shift-c is Chrome DevTools inspect-element
+    alt-shift-r = 'reload-config'
 
     alt-r = 'mode resize'
 
