@@ -19,7 +19,7 @@ if [ -z "$pane" ]; then
   tmux has-session -t "$holder" 2>/dev/null ||
     tmux new-session -d -s "$holder" -c "$HOME"
   path="$(tmux display-message -p '#{pane_current_path}')"
-  pane="$(tmux new-window -d -P -F '#{pane_id}' -t "$holder": -c "$path" "claude")"
+  pane="$(tmux new-window -d -P -F '#{pane_id}' -t "$holder": -c "$path" "opencode")"
   tmux set @opencode_pane "$pane"
 fi
 
