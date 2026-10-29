@@ -2,10 +2,23 @@
 # Toggle a persistent opencode pane into/out of the current window.
 # One opencode per tmux session; it lives in a hidden holder session while
 # toggled off, so it keeps running and can be pulled into any window.
+#
+# Usage: tmux-opencode-pane [side|float]
+#   side  (default) join it as a split on the right
+#   float           show it in a popup (nested client attached to the holder)
 set -uo pipefail
 
 holder="_opencode"
+mode="${1:-side}"
 width="${OPENCODE_PANE_WIDTH:-50%}"
+popup_w="${OPENCODE_POPUP_WIDTH:-80%}"
+popup_h="${OPENCODE_POPUP_HEIGHT:-80%}"
+
+# inside the popup we're attached to the holder: either toggle closes it
+if [ "$(tmux display-message -p '#{session_name}')" = "$holder" ]; then
+  tmux detach-client
+  exit 0
+fi
 
 pane="$(tmux show -qv @opencode_pane)"
 
@@ -21,6 +34,18 @@ if [ -z "$pane" ]; then
   path="$(tmux display-message -p '#{pane_current_path}')"
   pane="$(tmux new-window -d -P -F '#{pane_id}' -t "$holder": -c "$path" "claude")"
   tmux set @opencode_pane "$pane"
+fi
+
+if [ "$mode" = "float" ]; then
+  # pull it back out of whatever window it's split into
+  if [ "$(tmux display-message -pt "$pane" '#{session_name}')" != "$holder" ]; then
+    tmux break-pane -d -s "$pane" -t "$holder":
+  fi
+  tmux set -t "$holder" status off
+  tmux select-window -t "$pane"
+  tmux display-popup -E -w "$popup_w" -h "$popup_h" \
+    "TMUX= tmux attach-session -t '$holder'"
+  exit 0
 fi
 
 win="$(tmux display-message -p '#{window_id}')"
